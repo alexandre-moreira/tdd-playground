@@ -30,12 +30,12 @@ describe('Unhappy Path', () => {
             expect(name).toBe('TypeError')
         }
     })
-
-    test(`getFactorial() should throw a TypeError with message "${typeErrorMessage}"`, () => {
+    const rangeErrorMessage = 'getFactorial should receive a number between 0 and 20 as argument'
+    test(`getFactorial(-1) should throw a RangeError with message "${rangeErrorMessage}"`, () => {
         try {
-            getFactorial()
+            getFactorial(-1)
         }catch({message}){
-            expect(message).toBe(typeErrorMessage)
+            expect(message).toBe(rangeErrorMessage)
         }
     })
 
@@ -44,5 +44,21 @@ describe('Unhappy Path', () => {
         const expected = 1
 
         expect(actual).toBe(expected)
+    })
+
+    test('getFactorial(-1) should throw a RengeError', () => {
+        try {
+            getFactorial(-1)
+        }catch({name}){
+            expect(name).toBe('RangeError')
+        }
+    })
+
+    test(`getFactorial() should throw a TypeError with message "${typeErrorMessage}"`, () => {
+        try {
+            getFactorial()
+        }catch({message}){
+            expect(message).toBe(typeErrorMessage)
+        }
     })
 })
